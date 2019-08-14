@@ -6,7 +6,7 @@ import styles from './Loader.css';
 const Loader = ({ byCenter }) => {
   const loaderPosition = cn({
     [styles.loader_by_center]: byCenter,
-    [styles.loader_after_element]: !byCenter,
+    [styles.loader_after_element]: byCenter,
   });
   return (
     <div className={loaderPosition}>

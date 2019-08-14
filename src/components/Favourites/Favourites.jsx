@@ -53,8 +53,8 @@ class Favourites extends React.Component {
     if (postsCats.length === 0) {
       return (
         <div>
-          Your favourites is empty. You can add cute cats here from:
-          <Link to="/" className={styles.link}> there</Link>
+          Your favourites is empty. You can add cute cats
+          <Link to="/" className={styles.link}> here</Link>
         </div>
       );
     }
