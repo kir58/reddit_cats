@@ -1,9 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
-import PropTypes from 'prop-types';
 import styles from './Loader.css';
 
-const Loader = ({ byCenter }) => {
+type Props = {
+  byCenter: boolean,
+}
+const Loader = ({ byCenter }: Props) => {
   const loaderPosition = cn({
     [styles.loader_by_center]: byCenter,
     [styles.loader_after_element]: !byCenter,
@@ -15,7 +17,4 @@ const Loader = ({ byCenter }) => {
   );
 };
 
-Loader.propTypes = {
-  byCenter: PropTypes.bool.isRequired,
-};
 export default Loader;

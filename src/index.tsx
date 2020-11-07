@@ -13,6 +13,7 @@ const favouritesCatsIds = {
   favouritesCatsIds: localStorage.getItem('favouritesCatsIds')
     ? JSON.parse(localStorage.getItem('favouritesCatsIds')) : [],
 };
+
 const store = createStore(
   reducers,
   favouritesCatsIds,
@@ -20,9 +21,10 @@ const store = createStore(
     applyMiddleware(thunk),
   ),
 );
+
 store.subscribe(() => {
-  // eslint-disable-next-line no-shadow
   const { favouritesCatsIds } = store.getState();
   localStorage.setItem('favouritesCatsIds', JSON.stringify(favouritesCatsIds));
 });
+
 render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

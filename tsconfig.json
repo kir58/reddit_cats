@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "module": "es6",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "typeRoots": [ "./src/typings", "./node_modules/@types"]
+  },
+
+  "exclude": [
+    "node_modules"
+  ]
+}

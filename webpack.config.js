@@ -4,26 +4,30 @@ const combineLoaders = require('webpack-combine-loaders');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index-bundle.js',
   },
+  target: 'web',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/'
       },
       {
         test: /\.css$/,
         loader: combineLoaders([
           {
             loader: 'style-loader',
+          },
+          {
+            loader: 'css-modules-typescript-loader',
           },
           {
             loader: 'css-loader',

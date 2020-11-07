@@ -7,7 +7,7 @@ export const fetchPostsSuccess = createAction('POSTS_FETCH_SUCCESS');
 export const fetchPostsFailure = createAction('POSTS_FETCH_FAILURE');
 export const toggleFavouritePosts = createAction('TOGGLE_FAVOURITE_POSTS');
 
-export const fetchPosts = (lastId = '') => async (dispatch) => {
+export const fetchPosts = (lastId = '') => async (dispatch: Function) => {
   dispatch(fetchPostsRequest());
   try {
     const response = await axios.get(`https://www.reddit.com/r/cats.json?after=${lastId}&limit=${LIMIT}`);

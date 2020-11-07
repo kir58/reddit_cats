@@ -1,29 +1,41 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect, ConnectedProps } from 'react-redux';
 import * as actions from '../../actions';
 import Loader from '../Loader/Loader';
 import Posts from '../Posts/Posts';
 
 import { POST_HEIGHT } from '../../constants';
+import { RootState } from '../../reducers';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   cats: state.posts.cats,
   lastId: state.posts.lastId,
   postsFetchingState: state.postsFetchingState,
   favouritesCatsIds: state.favouritesCatsIds,
 });
 
-const actionCreators = {
+const actionsCreators = {
   fetchPosts: actions.fetchPosts,
   toggleFavouritePosts: actions.toggleFavouritePosts,
 };
 
-class Index extends React.Component {
+const connector = connect(
+  mapStateToProps,
+  actionsCreators,
+);
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type State = {
+  lastId: string,
+  doRequest: boolean,
+}
+
+class Index extends React.Component<PropsFromRedux> {
   state = { lastId: '', doRequest: true };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: PropsFromRedux, state: State) {
     if (props.lastId !== state.lastId) {
       return { lastId: props.lastId, doRequest: true };
     }
@@ -42,7 +54,7 @@ class Index extends React.Component {
     window.removeEventListener('scroll', this.handleScroll, false);
   }
 
-  handleToggle = (name) => () => {
+  handleToggle = (name: string) => () => {
     const { toggleFavouritePosts } = this.props;
     toggleFavouritePosts({ name });
   }
@@ -53,8 +65,10 @@ class Index extends React.Component {
     const scrollHeight = documentElement ? documentElement.scrollHeight : body.scrollHeight;
     const clientHeight = documentElement.clientHeight || window.innerHeight;
     const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - POST_HEIGHT;
+    
     const { fetchPosts, lastId } = this.props;
     const { doRequest } = this.state;
+  
     if (scrolledToBottom && doRequest) {
       fetchPosts(lastId);
     }
@@ -67,7 +81,7 @@ class Index extends React.Component {
         <Posts
           cats={cats}
           favouritesCatsIds={favouritesCatsIds}
-          handleToggle={this.handleToggle}
+          onToggle={this.handleToggle}
         />
         {postsFetchingState === 'requested' ? <Loader byCenter={cats.length === 0} /> : null}
         {postsFetchingState === 'failed' ? <div>Sorry, try to reload the page</div> : null}
@@ -75,13 +89,5 @@ class Index extends React.Component {
     );
   }
 }
-Index.propTypes = {
-  cats: PropTypes.array.isRequired,
-  favouritesCatsIds: PropTypes.array.isRequired,
-  toggleFavouritePosts: PropTypes.func.isRequired,
-  postsFetchingState: PropTypes.string.isRequired,
-  fetchPosts: PropTypes.func.isRequired,
-  lastId: PropTypes.string.isRequired,
-};
 
-export default connect(mapStateToProps, actionCreators)(Index);
+export default connector(Index);
