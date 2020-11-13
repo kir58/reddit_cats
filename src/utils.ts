@@ -1,22 +1,24 @@
+import { DATE_TEXT } from "./constants";
+
 /* eslint-disable import/prefer-default-export */
-export const getDiffDate = (createdDate: number) : string => {
-  const currentDate = new Date().valueOf() / 1000;
+export const getDiffDate = (createdDate: number, startDate = new Date().valueOf()) : string => {
+  const currentDate = startDate / 1000;
   const delta = Math.floor(currentDate - createdDate);
   const days = Math.floor(delta / 86400);
 
   if (days > 0) {
-    return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+    return DATE_TEXT.DAYS(days);
   }
 
   const hours = Math.floor(delta / 3600) % 24;
   if (hours > 0) {
-    return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+    return DATE_TEXT.HOURS(hours);
   }
 
   const minutes = Math.floor(delta / 60) % 60;
   if (minutes > 0) {
-    return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} ago`;
+    return DATE_TEXT.MINUTES(minutes);
   }
 
-  return 'just now';
+  return DATE_TEXT.NOW_DATE;
 };

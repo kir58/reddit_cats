@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Posts /> should match the snapshot 1`] = `
+<ul>
+  <li
+    key="1"
+  >
+    <div>
+      <button
+        aria-label="cat1"
+        id="cat1"
+        name="cat1"
+        type="button"
+      />
+      <label
+        htmlFor="cat1"
+      >
+        <img
+          alt="favourites"
+          src="test-file-stub"
+          title="add to favourites"
+        />
+      </label>
+      <div>
+        Posted by 
+        <span
+          className="undefined undefined"
+        >
+          master cat
+        </span>
+      </div>
+      <div
+        className="undefined undefined"
+      >
+         just now
+      </div>
+    </div>
+    <div>
+      cat singer 
+      <span>
+        Cat Picture
+      </span>
+    </div>
+    <img
+      alt="cat"
+      src="https://i.redd.it/xy7k06kx4py51.jpg"
+    />
+  </li>
+  <li
+    key="2"
+  >
+    <div>
+      <button
+        aria-label="cat2"
+        id="cat2"
+        name="cat2"
+        type="button"
+      />
+      <label
+        htmlFor="cat2"
+      >
+        <img
+          alt="favourites"
+          src="test-file-stub"
+          title="add to favourites"
+        />
+      </label>
+      <div>
+        Posted by 
+        <span
+          className="undefined undefined"
+        >
+          master cat
+        </span>
+      </div>
+      <div
+        className="undefined undefined"
+      >
+         just now
+      </div>
+    </div>
+    <div>
+      cat singer 
+      <span>
+        Cat Picture
+      </span>
+    </div>
+    <img
+      alt="cat"
+      src="https://i.redd.it/xy7k06kx4py51.jpg"
+    />
+  </li>
+  <li
+    key="3"
+  >
+    <div>
+      <button
+        aria-label="cat3"
+        id="cat3"
+        name="cat3"
+        type="button"
+      />
+      <label
+        htmlFor="cat3"
+      >
+        <img
+          alt="favourites"
+          src="test-file-stub"
+          title="remove from favourites"
+        />
+      </label>
+      <div>
+        Posted by 
+        <span
+          className="undefined undefined"
+        >
+          master cat
+        </span>
+      </div>
+      <div
+        className="undefined undefined"
+      >
+         just now
+      </div>
+    </div>
+    <div>
+      cat singer 
+      <span>
+        Cat Picture
+      </span>
+    </div>
+    <div>
+      <video
+        controls={true}
+        src="https://v.redd.it/gorcce379sy51/DASH_1080.mp4?source=fallback"
+      >
+        <track
+          kind="captions"
+          label="english_captions"
+          src="#"
+          srcLang="en"
+        />
+      </video>
+    </div>
+  </li>
+</ul>
+`;

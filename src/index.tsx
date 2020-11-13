@@ -9,9 +9,9 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App/App';
 import reducers from './reducers';
 
+const favouritesCatsIdsFromLocalStorage = localStorage.getItem('favouritesCatsIds');
 const favouritesCatsIds = {
-  favouritesCatsIds: localStorage.getItem('favouritesCatsIds')
-    ? JSON.parse(localStorage.getItem('favouritesCatsIds')) : [],
+  favouritesCatsIds: favouritesCatsIdsFromLocalStorage ? JSON.parse(favouritesCatsIdsFromLocalStorage) : [],
 };
 
 const store = createStore(

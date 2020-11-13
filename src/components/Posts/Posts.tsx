@@ -4,19 +4,16 @@ import styles from './Posts.css';
 import { getDiffDate } from '../../utils';
 import FullStar from '../../assest/full_star.png';
 import StarWithoutBackground from '../../assest/star_without_background.png';
-import { CatDetail, CatsIds } from '../../types';
+import { PostsProps } from '../../types';
 
 
-
-type Props = {
-  onToggle: Function,
-  favouritesCatsIds: CatsIds,
-  cats: CatDetail[],
-
-}
-const Posts = ({ cats, favouritesCatsIds, onToggle }: Props) =>  (
+const Posts = ({ cats, favouritesCatsIds, onToggle }: PostsProps) => (
   <ul className={styles.list}>
-    {cats.map(({ data: { id, name, author, created_utc, title, link_flair_text, post_hint, url, media, } }) => (
+    {cats.map(({
+      data: {
+        id, name, author, created_utc, title, link_flair_text, post_hint, url, media,
+      },
+    }) => (
       <li key={id} className={styles.item}>
         <div className={styles.item_header}>
           <button

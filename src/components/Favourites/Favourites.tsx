@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './Favourites.css';
 import * as actions from '../../actions';
-import Loader from '../Loader/Loader';
+import { Loader } from '../Loader/Loader';
 import Posts from '../Posts/Posts';
 import { RootState } from '../../reducers';
 import { CatDetail } from '../../types';

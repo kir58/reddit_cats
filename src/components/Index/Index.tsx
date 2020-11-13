@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import * as actions from '../../actions';
-import Loader from '../Loader/Loader';
+import { Loader } from '../Loader/Loader';
 import Posts from '../Posts/Posts';
 
 import { POST_HEIGHT } from '../../constants';
@@ -76,6 +76,10 @@ class Index extends React.Component<PropsFromRedux> {
 
   render() {
     const { cats, postsFetchingState, favouritesCatsIds } = this.props;
+    
+    const loaderContent = postsFetchingState === 'requested' ? <Loader byCenter={cats.length === 0} /> : null;
+    const errorContent = postsFetchingState === 'failed' ? <div>Sorry, try to reload the page</div> : null;
+  
     return (
       <>
         <Posts
@@ -83,8 +87,8 @@ class Index extends React.Component<PropsFromRedux> {
           favouritesCatsIds={favouritesCatsIds}
           onToggle={this.handleToggle}
         />
-        {postsFetchingState === 'requested' ? <Loader byCenter={cats.length === 0} /> : null}
-        {postsFetchingState === 'failed' ? <div>Sorry, try to reload the page</div> : null}
+        {loaderContent}
+        {errorContent}
       </>
     );
   }
